@@ -1,0 +1,633 @@
+<!-- <!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء QR Code</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+    <style>
+        #qrcode {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #qrLink {
+            margin-top: 10px;
+            display: inline-block;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>إنشاء QR Code من رابط</h2>
+    
+    <form id="linkForm" dir="rtl">
+        <label for="linkInput"  >الرابط الموجه له : </label>
+        <input type="url" id="linkInput" placeholder="أدخل رابط" required>
+        <br><br>
+
+        <label for="linkNameInput" >الرابط الوهمي:</label>
+        <input type="text" id="linkNameInput" placeholder="اسم الرابط" required>
+        <button type="submit">إنشاء QR Code</button>
+    </form>
+
+    <div id="qrcode"></div>
+    <a id="qrLink" href="#" target="_blank" style="display:none;">اضغط هنا للانتقال</a>
+
+    <script>
+        document.getElementById("linkForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // الحصول على المدخلات
+            var realLink = document.getElementById("linkInput").value;
+            var fakeLink = document.getElementById("linkNameInput").value;
+            
+            // مسح QR Code القديم
+            var qrElement = document.getElementById("qrcode");
+            qrElement.innerHTML = "";
+
+            // إنشاء QR Code باستخدام الرابط الوهمي
+            QRCode.toDataURL(fakeLink, { errorCorrectionLevel: 'H' }, function (error, url) {
+                if (error) {
+                    console.error("Error generating QR Code:", error);
+                    return;
+                }
+
+                // إنشاء صورة من الـ URL المولد
+                var img = new Image();
+                img.src = url;
+                img.alt = "QR Code";
+                img.style.cursor = "pointer"; // إظهار اليد عند مرور الفأرة
+                qrElement.appendChild(img);
+
+                // إضافة حدث عند النقر على صورة الـ QR Code
+                img.addEventListener("click", function() {
+                    // عند النقر على QR Code، سيتم توجيه المستخدم للرابط الأصلي
+                    window.location.href = realLink;
+                });
+                
+
+                // إضافة الرابط الذي يظهر أسفل الـ QR Code
+                var qrLink = document.getElementById("qrLink");
+                qrLink.href = realLink ;  // تعيين الرابط الأصلي
+                qrLink.innerHTML = fakeLink;  // تعيين اسم الرابط
+                qrLink.style.display = "inline-block";  // إظهار الرابط أسفل QR Code
+            });
+        });
+    </script>
+
+</body>
+</html> -->
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء QR Code</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+    <style>
+        #qrcode {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #qrLink {
+            margin-top: 10px;
+            display: inline-block;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center;" dir="rtl">إنشاء QR Code من رابط</h2>
+    
+    <form id="linkForm" dir="rtl">
+        <label for="linkInput">الرابط الموجه له:</label>
+        <input type="url" id="linkInput" placeholder="أدخل رابط" required>
+        <br><br>
+
+        <label for="linkNameInput">الرابط الوهمي:</label>
+        <input type="text" id="linkNameInput" placeholder="اسم الرابط" required>
+        <button type="submit">إنشاء QR Code</button>
+    </form>
+
+    <div id="qrcode"></div>
+
+    <script>
+        document.getElementById("linkForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+         
+            var realLink = document.getElementById("linkInput").value;
+            var fakeLink = document.getElementById("linkNameInput").value;
+            
+         
+            var qrElement = document.getElementById("qrcode");
+            qrElement.innerHTML = "";
+              
+            QRCode.toDataURL(fakeLink, { errorCorrectionLevel: 'H' }, function (error, url) {
+                if (error) {
+                    console.error("Error generating QR Code:", error);
+                    return;
+                }
+                 
+                 
+
+                var img = new Image();
+                img.src = url;
+                img.alt = "QR Code";
+                img.style.cursor = "pointer"; 
+                qrElement.appendChild(img);
+
+                img.addEventListener("click", function() {
+                    window.location.href = realLink;
+                });
+
+                
+                var linkElement = document.createElement("a");
+                linkElement.href = realLink; 
+                linkElement.target = "_blank"; 
+                linkElement.innerHTML = fakeLink; 
+                qrElement.appendChild(linkElement); 
+            });
+        });
+    </script>
+
+</body>
+</html> -->
+
+
+<!--
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء QR Code</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+    <style>
+        #qrcode {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #qrLink {
+            margin-top: 10px;
+            display: inline-block;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>إنشاء QR Code من رابط</h2>
+    
+    <form id="linkForm" dir="rtl">
+        <label for="linkInput">الرابط الموجه له:</label>
+        <input type="url" id="linkInput" placeholder="أدخل رابط" required>
+        <br><br>
+
+        <label for="linkNameInput">الرابط الوهمي:</label>
+        <input type="text" id="linkNameInput" placeholder="اسم الرابط" required>
+        <button type="submit">إنشاء QR Code</button>
+    </form>
+
+    <div id="qrcode"></div>
+    <a id="qrLink" href="#" target="_blank" style="display:none;">اضغط هنا للانتقال</a>
+
+    <script>
+        document.getElementById("linkForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // الحصول على المدخلات
+            var realLink = document.getElementById("linkInput").value;
+            var fakeLink = document.getElementById("linkNameInput").value;
+            
+            // مسح QR Code القديم
+            var qrElement = document.getElementById("qrcode");
+            qrElement.innerHTML = "";
+
+            // إنشاء QR Code باستخدام الرابط الوهمي (النص فقط)
+            QRCode.toDataURL(fakeLink, { errorCorrectionLevel: 'H' }, function (error, url) {
+                if (error) {
+                    console.error("Error generating QR Code:", error);
+                    return;
+                }
+                 
+                
+                // إنشاء صورة من الـ URL المولد
+                var img = new Image();
+                img.src = url;
+                img.alt = "QR Code";
+                img.style.cursor = "pointer"; // إظهار اليد عند مرور الفأرة
+                qrElement.appendChild(img);
+
+                // إضافة حدث عند النقر على صورة الـ QR Code
+                img.addEventListener("click", function() {
+                    // عرض نافذة تأكيد قبل التوجه للرابط الأصلي
+                    var userConfirmed = confirm("هل تريد الانتقال إلى الصفحة المطلوبة؟");
+                    if (userConfirmed) {
+                        window.open(realLink, "_blank");
+                    }
+                });
+
+                // إضافة الرابط الذي يظهر أسفل الـ QR Code
+                var qrLink = document.getElementById("qrLink");
+                qrLink.href = realLink;  // استخدام "#" لمنع التوجيه المباشر
+                qrLink.innerHTML = fakeLink;  // تعيين اسم الرابط
+                qrLink.style.display = "inline-block";  // إظهار الرابط أسفل QR Code
+                
+                fakeLink.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    // عرض نافذة تأكيد قبل التوجه للرابط الأصلي
+                    var userConfirmed = confirm("هل تريد الانتقال إلى الصفحة المطلوبة؟");
+                    if (userConfirmed) {
+                        window.open(realLink, "_blank");
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+-->
+
+
+<!-- <!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء QR Code</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+    <style>
+        #qrcode {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #qrLink {
+            margin-top: 10px;
+            display: inline-block;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        #qrReader {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>إنشاء QR Code من رابط</h2>
+    
+    <form id="linkForm" dir="rtl">
+        <label for="linkInput">الرابط الموجه له:</label>
+        <input type="url" id="linkInput" placeholder="أدخل رابط" required>
+        <br><br>
+
+        <label for="linkNameInput">الرابط الوهمي:</label>
+        <input type="text" id="linkNameInput" placeholder="اسم الرابط" required>
+        <button type="submit">إنشاء QR Code</button>
+    </form>
+
+    <div id="qrcode"></div>
+    <a id="qrLink" href="#" target="_blank" style="display:none;">اضغط هنا للانتقال</a>
+
+    إضافة مكان لعرض كاميرا QR scanner
+    <div id="qrReader"></div>
+
+    <script>
+        document.getElementById("linkForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // الحصول على المدخلات
+            var realLink = document.getElementById("linkInput").value;
+            var fakeLink = document.getElementById("linkNameInput").value;
+            
+            // مسح QR Code القديم
+            var qrElement = document.getElementById("qrcode");
+            qrElement.innerHTML = "";
+
+            // إنشاء رابط يحتوي على الرابط الأصلي في معلمة query
+            var fullFakeLink = fakeLink + "?realLink=" + encodeURIComponent(realLink);
+
+            // إنشاء QR Code باستخدام الرابط الوهمي
+            QRCode.toDataURL(fullFakeLink, { errorCorrectionLevel: 'H' }, function (error, url) {
+                if (error) {
+                    console.error("Error generating QR Code:", error);
+                    return;
+                }
+
+                // إنشاء صورة من الـ URL المولد
+                var img = new Image();
+                img.src = url;
+                img.alt = "QR Code";
+                img.style.cursor = "pointer"; // إظهار اليد عند مرور الفأرة
+                qrElement.appendChild(img);
+
+                // إضافة حدث عند النقر على صورة الـ QR Code
+                img.addEventListener("click", function() {
+                    // عند النقر على QR Code، سيتم توجيه المستخدم إلى الرابط الأصلي
+                    window.location.href = realLink;
+                });
+                
+                // إضافة الرابط الذي يظهر أسفل الـ QR Code
+                var qrLink = document.getElementById("qrLink");
+                qrLink.href = realLink;  // تعيين رابط وهمي
+                qrLink.innerHTML = fakeLink;  // تعيين اسم الرابط
+                qrLink.style.display = "inline-block";  // إظهار الرابط أسفل QR Code
+            });
+        });
+
+        // استخدام مكتبة html5-qrcode للمسح من الموبايل
+        function onScanSuccess(decodedText, decodedResult) {
+            // استخراج الرابط الأصلي من الـ decodedText
+            var queryParams = new URLSearchParams(decodedText.split('?')[1]);
+            var originalLink = decodeURIComponent(queryParams.get('realLink'));
+            
+            if (originalLink) {
+                window.location.href = originalLink;  // التوجيه للرابط الأصلي
+            } else {
+                alert("لم يتم العثور على الرابط الأصلي في الـ QR Code.");
+            }
+        }
+
+        let html5QrCode = new Html5Qrcode("qrReader");
+        html5QrCode.start(
+            { facingMode: "environment" }, 
+            { fps: 10, qrbox: 250 },
+            onScanSuccess)
+        .catch(err => {
+            console.error("Error starting QR scanner", err);
+        });
+    </script>
+
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء QR Code</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+    <style>
+        #qrcode {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #linkName {
+            margin-top: 10px;
+            display: block;
+            text-align: center;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>إنشاء QR Code من رابط</h2>
+    
+    <form id="linkForm">
+        <label for="linkInput">  الرابط الوهمى</label>
+        <input type="url" id="linkInput" placeholder="أدخل رابط" required>
+        <label for="linkNameInput">الرابط الموجه له  :</label>
+        <input type="text" id="linkNameInput" placeholder="اسم الرابط" required>
+        <button type="submit">إنشاء QR Code</button>
+    </form>
+
+    <div id="qrcode"></div>
+    <a id="qrLink" href="#" target="_blank" style="display:none;" id="linkName"></a>
+
+    <script>
+        document.getElementById("linkForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // الحصول على المدخلات
+            var originalLink = document.getElementById("linkInput").value;
+            var fakeLink = "https://app.balady.sa000"; // النص الوهمي
+            var linkName = document.getElementById("linkNameInput").value;
+            
+            // إنشاء QR Code باستخدام النص الوهمي
+            var qrElement = document.getElementById("qrcode");
+            qrElement.innerHTML = ""; // مسح QR Code القديم
+            QRCode.toDataURL(fakeLink, { errorCorrectionLevel: 'H' }, function (error, url) {
+                if (error) {
+                    console.error(error);
+                    return;
+                }
+
+                // إنشاء الصورة من الـ URL
+                var img = new Image();
+                img.src = url;
+                img.alt = "QR Code";
+                img.style.cursor = "pointer"; // إظهار اليد عند مرور الفأرة
+
+                // إضافة الصورة إلى الـ qrcode div
+                qrElement.appendChild(img);
+
+                // إعداد الرابط مع الاسم
+                var qrLink = document.getElementById("qrLink");
+                qrLink.href = originalLink;  // تعيين الرابط الأصلي
+                qrLink.innerHTML = linkName;  // تعيين اسم الرابط
+                qrLink.style.display = "inline-block";  // إظهار الرابط
+
+                // إضافة حدث عند النقر على صورة الـ QR Code
+                img.addEventListener('click', function() {
+                    // عند النقر على الصورة، إخفاء الصورة وعرض الرابط
+                    qrElement.innerHTML = ""; // إخفاء الـ QR Code
+                    qrLink.style.display = "inline-block"; // إظهار الرابط
+                });
+            });
+        });
+    </script>
+
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مولد QR Code ذكي</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        input[type="url"],
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #bdc3c7;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #qrcode {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        #fakeLinkDisplay {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #fakeLinkDisplay a {
+            color: #e74c3c;
+            text-decoration: none;
+            border-bottom: 2px dashed #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>مولد QR Code ذكي مع توجيه آمن</h1>
+    
+    <div class="form-group">
+        <label for="realLink">الرابط الحقيقي (الوجهة النهائية):</label>
+        <input type="url" id="realLink" placeholder="https://example-real.com" required>
+    </div>
+
+    <div class="form-group">
+        <label for="fakeLink">الرابط الوهمي (الذي سيظهر للمستخدم):</label>
+        <input type="text" id="fakeLink" placeholder="example-safe.com" required>
+    </div>
+
+    <button type="button" onclick="generateQR()">إنشاء QR Code</button>
+
+    <div id="qrcode"></div>
+    <div id="fakeLinkDisplay"></div>
+
+    <script>
+        function generateQR() {
+            // استخراج القيم من الحقول
+            const realLink = encodeURIComponent(document.getElementById('realLink').value);
+            const fakeLink = document.getElementById('fakeLink').value;
+
+            // إنشاء رابط الصفحة الوسيطة - استبدل example.com بنطاقك
+            const redirectURL = `./redirect.html?url=${realLink}`;
+
+            // مسح المحتوى السابق
+            document.getElementById('qrcode').innerHTML = '';
+            document.getElementById('fakeLinkDisplay').innerHTML = '';
+
+            // إنشاء QR Code
+            QRCode.toDataURL(redirectURL, { errorCorrectionLevel: 'H' }, (err, url) => {
+                if (err) {
+                    alert('حدث خطأ أثناء إنشاء QR Code!');
+                    return;
+                }
+
+                // عرض QR Code
+                const img = new Image();
+                img.src = url;
+                img.alt = "QR Code";
+                img.style.width = '250px';
+                img.style.height = '250px';
+                document.getElementById('qrcode').appendChild(img);
+
+                // عرض الرابط الوهمي القابل للنقر
+                const fakeLinkDisplay = document.getElementById('fakeLinkDisplay');
+                fakeLinkDisplay.innerHTML = `
+                    <p>الرابط الظاهري: 
+                        <a href="${redirectURL}" target="_blank">${fakeLink}</a>
+                    </p>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>
+

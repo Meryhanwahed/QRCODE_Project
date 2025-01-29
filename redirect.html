@@ -1,0 +1,72 @@
+<!--<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التحويل</title>
+</head>
+<body>
+
+    <h2 dir="rtl">التحويل إلى الرابط الحقيقي</h2>
+    <p dir="rtl">تم مسح QR Code. اضغط على الرابط الوهمي للمتابعة:</p>
+
+    <a id="fakeLink" href="#" style="color: blue; text-decoration: underline; cursor: pointer;"></a>
+
+    <script>
+        // Extract realLink and fakeLink from the query parameters
+        var urlParams = new URLSearchParams(window.location.search);
+        var realLink = urlParams.get('realLink');
+        var fakeLink = urlParams.get('fakeLink');
+
+        document.getElementById('fakeLink').innerText = fakeLink;
+        document.getElementById('fakeLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            var userConfirmed = confirm("هل ترغب في الانتقال إلى الرابط الفعلي؟");
+            if (userConfirmed) {
+                window.location.href = realLink;
+            }
+        });
+    </script>
+
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>توجيه إلى الرابط الأصلي</title>
+    <script>
+        // استخراج الرابط الأصلي من البارامترات
+        const urlParams = new URLSearchParams(window.location.search);
+        const realLink = urlParams.get('url');
+
+        function redirect() {
+            if (confirm("هل تريد الانتقال إلى الصفحة المطلوبة؟")) {
+                window.location.href = realLink;
+            }
+        }
+    </script>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            padding: 15px 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body onload="redirect()">
+    <h1>جاري التوجيه إلى الرابط المطلوب...</h1>
+</body>
+</html>
