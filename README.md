@@ -27,5 +27,5 @@ QRCODE_Project/
 [GitHub Repository](https://github.com/Meryhanwahed/QRCODE_Project)
 
 ## 🌍 رابط التطبيق المباشر
-[Live Demo]([ضع_هنا_رابط_التطبيق_المباشر](https://gleaming-syrniki-2d49b6.netlify.app/))
+[Live Demo]([https://gleaming-syrniki-2d49b6.netlify.app/](https://gleaming-syrniki-2d49b6.netlify.app/))
 
